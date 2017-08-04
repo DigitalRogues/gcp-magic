@@ -9,7 +9,7 @@ spec:
     app: api
     #tier: backend
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: apiport
-  type: "LoadBalancer"
+     - port: 4567 #inside pod port
+       protocol: TCP
+       name: apiport
+  type: NodePort

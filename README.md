@@ -1,7 +1,10 @@
 # Kubernetes style
+I took an old docker based api I built and tweaked it a bit to run in kubernetes on google cloud
 
 
 
+
+<a href="https://www.w3schools.com"> <img src="diagram.png" alt="Drawing" style="width: 480px;"/></a>
 
 
 
