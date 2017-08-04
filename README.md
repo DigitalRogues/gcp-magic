@@ -1,0 +1,70 @@
+# Kubernetes style
+
+
+
+
+
+
+# magicapi_ruby
+Disneyland stats scraped and posted to json - Ruby style.  
+
+ example data - dlr is Disneyland, dca is California Adventure:
+
+```json
+{
+  "_id": {
+  "$oid": "56fff743075a0d0001b782d2"
+  },
+    "date": "Saturday April 02 2016",
+    "lastUpdated": "Saturday, 02 Apr 2016  9:45 AM",
+    "lastUpdated_unix": 1459615555,
+    "closed": "Closed for refurbishment: Sailing Ship Columbia,Davy Crockett's Explorer Canoes,Pirate's Lair on Tom Sawyer Island,Jungle Cruise,Autopia,Fantasmic!,Disneyland Railroad ",
+  "dlr": {
+    "crowdIndex": "70",
+    "times": "8:00AM to 12:00AM",
+    "forecast": "yup, it’s packed"
+   },
+  "dca": {
+    "crowdIndex": "30",
+    "times": "8:00AM to 10:00PM",
+    "forecast": "yup, it’s packed"
+   }
+}
+```
+
+## Breakdown
+the ecosystem is broken down into 3 components all running in Docker containers
+
+1.  The api/server in the `api` folder
+2.  The web scrape in `scraper` folder
+3.  Mongo backend thats just an ephemeral docker container
+
+## api folder
+The api is build using `Sinatra` and just outputs some basic json at `/` wrapped in ``<pre>`` tags to make it easier to read and at `/json` is the raw json dump.
+###  api files
+  `server.rb` all the ruby code for sinatra and the web outputs
+
+  `Gemfile*` related ruby code to easily run `bundle install` for the required gems
+
+  `Dockerfile` docker file used to build the image and include required gems and `server.rb`
+
+  `rebuildAPI.sh` bash script to make rebuilding the image and push it to my docker hub account easier.
+
+
+## scrape folder
+The scraper runs on a loop every 10 minutes and scrapes a couple disneyland related websites for bits of information, aggregates it, then dumps it into the mongo database.
+
+### scrape files
+  `scrape.rb` ruby code that loops and scrapes the websites for information
+
+  `Gemfile*` related ruby code to easily run `bundle install` for the required gems
+
+  `Dockerfile` docker file used to build the image and include required gems and `scrape.rb`
+
+  `rebuildImage.sh` bash script to make rebuilding the image and push it to my docker hub account easier.
+
+## Mongo DB
+For simplicity sake, the mongodb is just a plain official mongo docker container that will only hang onto old data as long as that container is around, for my usage, I dont need to persist long term data.
+
+# Usage
+

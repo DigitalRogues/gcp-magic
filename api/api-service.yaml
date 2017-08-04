@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-service
+  labels: 
+    app: api
+spec:
+  selector:
+    app: api
+    #tier: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: apiport
+  type: "LoadBalancer"

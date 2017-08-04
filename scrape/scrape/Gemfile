@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+
+gem 'mongo', '~> 2.1'
+gem 'nokogiri'
+gem 'awesome_print'
+
