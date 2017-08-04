@@ -4,7 +4,7 @@ I took an old docker based api I built and tweaked it a bit to run in kubernetes
 
 
 
-<a href="https://www.w3schools.com"> <img src="diagram.png" alt="Drawing" style="width: 480px;"/></a>
+<a href="https://github.com/DigitalRogues/gcp-magic/blob/master/diagram.png"> <img src="diagram.png" alt="Drawing" style="width: 480px;"/></a>
 
 
 
