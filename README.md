@@ -68,6 +68,3 @@ The scraper runs on a loop every 10 minutes and scrapes a couple disneyland rela
 
 ## Mongo DB
 For simplicity sake, the mongodb is just a plain official mongo docker container that will only hang onto old data as long as that container is around, for my usage, I dont need to persist long term data.
-
-# Usage
-
